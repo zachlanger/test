@@ -19,6 +19,7 @@ RUN sed -i 's/md5\|peer/trust/' /etc/postgresql/*/main/pg_hba.conf
 RUN echo 'service postgresql start' >> $CONTAINER_INIT
 
 RUN gem install bundler
+RUN gem install rails
 RUN bundle config --global path /cache/
 RUN echo 'bundle config --global jobs $(cat /proc/cpuinfo | grep -c processor)' >> $CONTAINER_INIT
 RUN gem install rubygems-update && update_rubygems
