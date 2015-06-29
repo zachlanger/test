@@ -22,6 +22,7 @@ RUN gem install bundler
 RUN bundle config --global path /cache/
 RUN echo 'bundle config --global jobs $(cat /proc/cpuinfo | grep -c processor)' >> $CONTAINER_INIT
 RUN gem install rubygems-update && update_rubygems
+RUN gem install --no-rdoc --no-ri rspec ci_reporter_rspec
 ENV BUNDLE_GEMFILE /workspace/Gemfile
 
 RUN echo 'Xvfb :0 -ac -screen 0 1024x768x24 >/dev/null 2>&1 &' >> $CONTAINER_INIT
